@@ -13,26 +13,26 @@ The module works with the OWASP ZAP API available when we have an existing runni
 ## Get Started 
 ### Start ZAP 
 
-  docker run --name zap -u zap -p 8080:8080 -i owasp/zap2docker-stable zap.sh -daemon -host 0.0.0.0 -port 8080 -config api.disablekey=true -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true
+    docker run --name zap -u zap -p 8080:8080 -i owasp/zap2docker-stable zap.sh -daemon -host 0.0.0.0 -port 8080 -config api.disablekey=true -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true
   
 _For testing, API key is disabled. Please change as per your requirement_
 
 ### Software Pre-requisites
 Ensure that the OWASP ZAP Python client is installed
 
-  pip install python-owasp-zap-v2.4
+    pip install python-owasp-zap-v2.4
   
 Assuming that `ansible` is already setup the following command will work if you don't want to copy the module to a path which is ANSIBLE_LIBRARY
 
-  $ ANSIBLE_LIBRARY=. ansible -m owasp_zap_test_module localhost -a "host=http://ZAP-Proxy:PORT target=http://target-webapp"
+    $ ANSIBLE_LIBRARY=. ansible -m owasp_zap_test_module localhost -a "host=http://ZAP-Proxy:PORT target=http://target-webapp"
   
 If you want to specify an API KEY
 
- $ ANSIBLE_LIBRARY=. ansible -m owasp_zap_test_module localhost -a "host=http://ZAP-Proxy:PORT target=http://target-webapp apikey=SECRET-VALUE"
+    $ ANSIBLE_LIBRARY=. ansible -m owasp_zap_test_module localhost -a "host=http://ZAP-Proxy:PORT target=http://target-webapp apikey=SECRET-VALUE"
  
  If you want to run an Active scan
  
- $ ANSIBLE_LIBRARY=. ansible -m owasp_zap_test_module localhost -a "host=http://ZAP-Proxy:PORT target=http://target-webapp scantype=active"
+      $ ANSIBLE_LIBRARY=. ansible -m owasp_zap_test_module localhost -a "host=http://ZAP-Proxy:PORT target=http://target-webapp scantype=active"
 
 
 
