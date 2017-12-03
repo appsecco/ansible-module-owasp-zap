@@ -33,6 +33,23 @@ If you want to specify an API KEY
  If you want to run an Active scan
  
       $ ANSIBLE_LIBRARY=. ansible -m owasp_zap_test_module localhost -a "host=http://ZAP-Proxy:PORT target=http://target-webapp scantype=active"
+      
+### Sample Playbook 
+A sample playbook you can use
+
+        - name: Testing OWASP ZAP Test Module
+          connection: local
+          hosts: localhost
+          tasks:
+          - name: Scan a website
+            owasp_zap_test_module:
+              host: "http://ZAP-Proxy:PORT"
+              target: "http://target-webapp"
+              scantype: passive
+            register: output
+        - name: Print version
+          debug:
+            msg: "Scan Report: {{ output }}"
 
 
 
